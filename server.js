@@ -9,7 +9,7 @@ app.use(cors());
 app.use(koaBody({ json: true })); // в лекции нет
 
 let nextId = 1;
-const constskills = [
+const skills = [
   { id: nextId++, name: 'React' },
   { id: nextId++, name: 'Redux' },
   { id: nextId++, name: 'Redux Thunk' },
@@ -29,9 +29,10 @@ router.get('/api/search', async (ctx, next) => {
   return new Promise((resolve, reject) => {
     setTimeout(
       () => {
-        constresponse = skills.filter((o) =>
+        const response = skills.filter((o) =>
           o.name.toLowerCase().startsWith(q.toLowerCase())
         );
+
         ctx.response.body = response;
         resolve();
       },
